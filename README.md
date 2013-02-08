@@ -17,46 +17,52 @@ Each notification email is an html file on its own. We need a directory to store
 ### Configuring your notifications class
 There are a few variables in the constructor of your notifications class that will now need setting up.
 
-    # Email Configuration
-    $this->_emailFromAddress    = 'no_reply@mysite.com';
-    $this->_emailFromName       = 'My Site Admin';
-    $this->_emailReplyToAddress = 'no_reply@mysite.com';
-    $this->_emailTemplateDir    = 'public/email-templates/';
+```php
+# Email Configuration
+$this->_emailFromAddress    = 'no_reply@mysite.com';
+$this->_emailFromName       = 'My Site Admin';
+$this->_emailReplyToAddress = 'no_reply@mysite.com';
+$this->_emailTemplateDir    = 'public/email-templates/';
+```
     
 ## Usage
 Now that your classes are configured, you can set up a method to send a notification. The below examples is taken from the Example_Notifications class.
     
-    /**
-     * This is an example method that sends a welcome email out.
-     * 
-     * @param <string> $name
-     * @param <string> $password
-     * @param <string> $emailAddress 
-     * return <boolean>
-     */
-    public function sendWelcomeEmail($name, $password, $emailAddress) {
-        
-        # Read in template contents
-        $template = file_get_contents($this->_emailTemplateDir . 'welcome-email.html');
-        
-        # Replace template variables
-        $template = str_replace('{name}', $name, $template);
-        $template = str_replace('{email}', $emailAddress, $template);
-        $template = str_replace('{password}', $password, $template);
-        $template = str_replace('{site_url}', $this->_siteUrl, $template);
-                
-        # Send the email
-        return parent::_sendEmailNotification(
-                    $emailAddress, 
-                    "Welcome to the the internets.", 
-                    $template, 
-                    'Plaintext goes here.', # Optional
-                    'Attachment.txt' # Optional
-                ); 
-    }
+```php
+/**
+ * This is an example method that sends a welcome email out.
+ * 
+ * @param <string> $name
+ * @param <string> $password
+ * @param <string> $emailAddress 
+ * return <boolean>
+ */
+public function sendWelcomeEmail($name, $password, $emailAddress) {
+    
+    # Read in template contents
+    $template = file_get_contents($this->_emailTemplateDir . 'welcome-email.html');
+    
+    # Replace template variables
+    $template = str_replace('{name}', $name, $template);
+    $template = str_replace('{email}', $emailAddress, $template);
+    $template = str_replace('{password}', $password, $template);
+    $template = str_replace('{site_url}', $this->_siteUrl, $template);
+            
+    # Send the email
+    return parent::_sendEmailNotification(
+                $emailAddress, 
+                "Welcome to the the internets.", 
+                $template, 
+                'Plaintext goes here.', # Optional
+                'Attachment.txt' # Optional
+            ); 
+}
+```
     
 Once you have set up your notifications as above, you can send out your notification email from your code with ease.
 
-    # Create an instance of the notifications handler and send the welcome email
-    $notificationHandler = new Example_Notifications();
-    $notificationHandler->sendWelcomeEmail("Billybob", "asd123", "billybob@gmail.com");
+```php
+# Create an instance of the notifications handler and send the welcome email
+$notificationHandler = new Example_Notifications();
+$notificationHandler->sendWelcomeEmail("Billybob", "asd123", "billybob@gmail.com");
+```
