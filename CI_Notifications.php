@@ -9,7 +9,7 @@
  * 
  * @author James McFall <james@mcfall.geek.nz>
  * @date 8 February 2013
- * @version V0.1
+ * @version V1.0
  */
 namespace JM;
 class CI_Notifications {
