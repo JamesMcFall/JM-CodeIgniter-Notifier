@@ -9,10 +9,14 @@ The included _CI_Notifications_ class is essentially an extendible wrapper for t
 
 ## Installation
 ### Setting up the classes
-Simply copy the _CI_Notifications_ class file and the _Example_Notifications_ class file to your _application/libraries_ folder (rename the Example_Notifications file and class to whatever you want). From there you'll want to add it to the autoloader ( _application/config/autoload.php_ ) in the libraries array.
+Simply copy the **CI_Notifications** class file and the **Example_Notifications** class file to your **application/libraries/** folder (rename the Example_Notifications file and class to whatever you want). From there you'll want to add it to the autoloader ( **application/config/autoload.php** ) in the libraries array like below:
+
+```php
+$autoload['libraries'] = array("CI_Notifications", "Example_Notifications");
+```
 
 ### Create an email template directory
-Each notification email is an html file on its own. We need a directory to store them in, so I normally create _./public/email-templates/_ in which I store the template files and their assets (normally all stored in a sub directory).
+Each notification email is an html file on its own. We need a directory to store them in, so I normally create **./public/email-templates/** in which I store the template files and their assets (normally all stored in a sub directory).
 
 ### Configuring your notifications class
 There are a few variables in the constructor of your notifications class that will now need setting up.
