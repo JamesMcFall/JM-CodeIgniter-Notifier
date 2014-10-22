@@ -19,7 +19,7 @@ $autoload['libraries'] = array("CI_Notifications", "Example_Notifications");
 Each notification email is an html file on its own. We need a directory to store them in, so I normally create **./public/email-templates/** in which I store the template files and their assets (normally all stored in a sub directory).
 
 ### Configuring your notifications class
-There are a few variables in the constructor of your notifications class that will now need setting up.
+There are a few variables **in the constructor of your notifications class** that will now need setting up.
 
 ```php
 # Email Configuration
