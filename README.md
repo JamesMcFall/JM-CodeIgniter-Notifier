@@ -70,3 +70,10 @@ Once you have set up your notifications as above, you can send out your notifica
 $notificationHandler = new Example_Notifications();
 $notificationHandler->sendWelcomeEmail("Billybob", "asd123", "billybob@gmail.com");
 ```
+
+Or since it's auto-loaded it'll be available like this:
+
+```php
+# Create an instance of the notifications handler and send the welcome email
+$this->example_notifications->sendWelcomeEmail("Billybob", "asd123", "billybob@gmail.com");
+```
